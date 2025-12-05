@@ -5,19 +5,67 @@
 //  Created by Chris Shirai on 11/23/25.
 //
 
+import MusicKit
 import SwiftUI
 
 struct ContentView: View {
+
+    @State private var selection = 0
+    @State private var isShowingAlert = false
+    @State private var message = ""
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+
+        TabView(selection: $selection) {
+            AlbumsView()
+                .tag(0)
+                .tabItem {
+                    Label("Albums", systemImage: "book")
+                }
+            SettingsView()
+                .tag(1)
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
+                }
         }
-        .padding()
+        .task {
+            let status = await MusicAuthorization.request()
+            
+            switch status {
+            case.authorized:
+                isShowingAlert = true
+                message = "authorized"
+                break
+            // Handle authorized success
+            case.restricted:
+                isShowingAlert = true
+                message = "restricted"
+                break
+            // Handle restricted error
+            case.notDetermined:
+                isShowingAlert = true
+                message = "notDetermined"
+                break
+            // Handle notDetermined error
+            case.denied:
+                isShowingAlert = true
+                message = "denied"
+                break
+            // Handle denied error
+            @unknown default:
+                isShowingAlert = true
+                message = "default"
+                break
+            // Handle notDetermined error
+            }
+        }
+        .alert(isPresented: $isShowingAlert, content: {
+            Alert(title: Text("test"), message: Text(self.message), dismissButton: .default(Text("OK")))
+        })
+
     }
 }
+
 
 #Preview {
     ContentView()

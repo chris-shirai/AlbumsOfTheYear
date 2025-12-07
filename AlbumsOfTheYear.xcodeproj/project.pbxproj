@@ -10,9 +10,22 @@
 		8304C09E2ED3E7DF00AD80C4 /* AlbumsOfTheYear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlbumsOfTheYear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8352B2BF2EE5018700EAF4CB /* Exceptions for "AlbumsOfTheYear" folder in "AlbumsOfTheYear" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 8304C09D2ED3E7DF00AD80C4 /* AlbumsOfTheYear */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8304C0A02ED3E7DF00AD80C4 /* AlbumsOfTheYear */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8352B2BF2EE5018700EAF4CB /* Exceptions for "AlbumsOfTheYear" folder in "AlbumsOfTheYear" target */,
+			);
 			path = AlbumsOfTheYear;
 			sourceTree = "<group>";
 		};
@@ -249,12 +262,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AlbumsOfTheYear/AlbumsOfTheYear.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 95TR32UGAS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AlbumsOfTheYear/Info.plist;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Access to music library for suggestions";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -284,12 +299,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AlbumsOfTheYear/AlbumsOfTheYear.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 95TR32UGAS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AlbumsOfTheYear/Info.plist;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Access to music library for suggestions";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

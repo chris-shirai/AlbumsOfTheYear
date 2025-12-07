@@ -5,6 +5,7 @@
 //  Created by Chris Shirai on 11/23/25.
 //
 
+import SwiftData
 import SwiftUI
 
 @main
@@ -13,5 +14,6 @@ struct AlbumsOfTheYearApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: [AlbumModel.self])
     }
 }

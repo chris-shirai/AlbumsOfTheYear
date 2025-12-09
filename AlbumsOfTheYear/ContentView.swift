@@ -22,17 +22,17 @@ struct ContentView: View {
             AlbumsView()
                 .tag(0)
                 .tabItem {
-                    Label("Albums", systemImage: "book")
+                    Label("Albums", systemImage: "music.note.square.stack")
                 }
             SettingsView()
                 .tag(1)
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
-            TestPage1()
+            SearchView()
                 .tag(2)
                 .tabItem {
-                    Label("Test", systemImage: "gear")
+                    Label("Search", systemImage: "magnifyingglass")
                 }
         }
         .task {

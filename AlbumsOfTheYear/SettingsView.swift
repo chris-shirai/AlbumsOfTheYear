@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @AppStorage("savedUserName") var userName: String = "" // Default value provided
+
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+                   TextField("Enter your name", text: $userName)
+                       .textFieldStyle(RoundedBorderTextFieldStyle())
+                       .padding()
+
+                   Text("Your saved name: \(userName)")
+               }
         
     }
 }

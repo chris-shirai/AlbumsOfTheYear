@@ -10,7 +10,7 @@ import MusicKit
 import SwiftData
 
 @Model
-class AlbumModel {
+class AlbumModel  {
 
     var name: String = ""
     var artist: String = ""
@@ -23,15 +23,17 @@ class AlbumModel {
         self.artworkUrl = artworkUrl
         self.releaseDate = releaseDate
     }
-    
-    var year: String {
-        
-        if (releaseDate != nil) {
-          return  releaseDate!.formatted(.dateTime.year())
-        }
 
-        
-        
-        return ""
+    var year: Int? {
+
+        if releaseDate != nil {
+
+            let yearString = releaseDate!.formatted(.dateTime.year())
+
+            if let intValue = Int(yearString) {
+                return intValue
+            }
+        }
+        return nil
     }
 }

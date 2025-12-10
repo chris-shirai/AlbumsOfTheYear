@@ -86,22 +86,20 @@ struct SearchView: View {
 
     private var searchResultsList: some View {
         List(albums) { album in
-            AlbumCell(album)
-                .onTapGesture {
-                    
-                    let year = getYear(releaseDate: album.releaseDate)
-                    
-                    let maxRank = GetAlbums(year: year ?? 0).map { $0.rank }.max()
-                    
-                    let selectedAlbum = AlbumModel(
-                        name: album.title,
-                        artist: album.artistName,
-                        artworkUrl: album.artwork?.url(width: 56, height: 56),
-                        releaseDate: album.releaseDate,
-                        rank: (maxRank ?? 0) + 1
-                    )
-                    context.insert(selectedAlbum)
-                }
+            AlbumCell(album: album, addAlbum: {
+                let year = getYear(releaseDate: album.releaseDate)
+                
+                let maxRank = GetAlbums(year: year ?? 0).map { $0.rank }.max()
+                
+                let selectedAlbum = AlbumModel(
+                    name: album.title,
+                    artist: album.artistName,
+                    artworkUrl: album.artwork?.url(width: 56, height: 56),
+                    releaseDate: album.releaseDate,
+                    rank: (maxRank ?? 0) + 1
+                )
+                context.insert(selectedAlbum)
+            })
         }
     }
     
@@ -122,17 +120,10 @@ struct SearchView: View {
 
 struct AlbumCell: View {
 
-    // MARK: - Object lifecycle
-
-    init(_ album: Album) {
-        self.album = album
-    }
-
-    // MARK: - Properties
 
     let album: Album
-
-    // MARK: - View
+    
+    let addAlbum: () -> Void
 
     var body: some View {
         //        NavigationLink(destination: AlbumDetailView(album)) {
@@ -143,11 +134,32 @@ struct AlbumCell: View {
         //            )
         //        }
 
-        MusicItemCell(
-            artwork: album.artwork,
-            title: album.title,
-            subtitle: album.artistName
-        )
+        HStack {
+            MusicItemCell(
+                artwork: album.artwork,
+                title: album.title,
+                subtitle: album.artistName
+            )
+            
+            Spacer()
+            
+            Button(action: {
+                addAlbum()
+              }) {
+                  Image(systemName: "plus.circle") // Icon when toggled ON
+                      .font(.title)
+                  
+//                  if isToggled {
+//                      Image(systemName: "pause.fill") // Icon when toggled ON
+//                          .font(.title)
+//                  } else {
+//                      Image(systemName: "play.fill") // Icon when toggled OFF
+//                          .font(.title)
+//                  }
+              }
+              .onTapGesture { }
+              .buttonStyle(BorderlessButtonStyle())
+        }
 
     }
 }
@@ -183,10 +195,11 @@ struct MusicItemCell: View {
                         .padding(.top, -4.0)
                 }
             }
+
         }
     }
 }
 
-#Preview {
-    SearchView()
-}
+//#Preview {
+//    MusicItemCell(artwork: nil, title: "Test", subtitle: "Artist")
+//}

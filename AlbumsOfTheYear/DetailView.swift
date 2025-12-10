@@ -10,13 +10,21 @@ import SwiftUI
 
 struct DetailView: View {
     var year: Int
-    var albums: [AlbumModel]
+    //    var albums: [AlbumModel]
+    @Query private var albums1: [AlbumModel]
+
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var context
 
     @State private var editMode = EditMode.inactive
     var isEditing: Bool { editMode.isEditing == true }
-    
+
+    var albums: [AlbumModel] {
+        albums1
+            .filter { $0.year == year }
+            .sorted { $0.rank < $1.rank }
+    }
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -25,7 +33,7 @@ struct DetailView: View {
                     .font(.title)
 
                 List {
-                    ForEach(albums.sorted(by: { $0.rank < $1.rank})) { album in
+                    ForEach(albums.sorted(by: { $0.rank < $1.rank })) { album in
                         HStack {
 
                             VStack {
@@ -44,8 +52,11 @@ struct DetailView: View {
                                 Spacer()
                             }
 
+                            Text("\(album.rank)")
+                                .padding(10)
+
                             VStack(alignment: .leading) {
-                                Text("\(album.name) - \(album.rank)")
+                                Text("\(album.name)")
                                     .lineLimit(1)
                                     .foregroundColor(.primary)
 
@@ -58,12 +69,15 @@ struct DetailView: View {
                         }
                     }
                     .onMove(perform: move)
-                 
+
                     .onDelete { indexSet in
                         for index in indexSet {
                             context.delete(albums[index])
                             do {
                                 try context.save()
+
+                                ReSort()
+
                                 print("Changes saved successfully!")
                             } catch {
                                 print("Error saving changes: \(error)")
@@ -75,22 +89,41 @@ struct DetailView: View {
 
                 }
                 .toolbar {
-                           EditButton()
-                       }
+                    EditButton()
+                }
                 .environment(\.editMode, $editMode)
 
             }
 
         }
-        
+
     }
-    
+
+    func ReSort() {
+
+        var mutableItems = albums.sorted(by: { $0.rank < $1.rank })
+
+        for (index, item) in mutableItems.enumerated() {
+            item.rank = index + 1
+        }
+    }
+
     func move(from source: IndexSet, to destination: Int) {
-//          items.move(fromOffsets: source, toOffset: destination)
-      }
+
+        // Create a mutable copy of the items array to manipulate the order
+        var mutableItems = albums.sorted(by: { $0.rank < $1.rank })
+
+        // Move the items in the mutable array
+        mutableItems.move(fromOffsets: source, toOffset: destination)
+
+        // Update the sortIndex of all items based on their new positions
+        for (index, item) in mutableItems.enumerated() {
+            item.rank = index + 1
+        }
+    }
 }
 
-#Preview {
-    DetailView(year: 2025, albums: SampleData.albums)
-        .preferredColorScheme(.dark)
-}
+//#Preview {
+//    DetailView(year: 2025, albums: SampleData.albums)
+//        .preferredColorScheme(.dark)
+//}

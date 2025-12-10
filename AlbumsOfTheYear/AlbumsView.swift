@@ -48,8 +48,7 @@ struct AlbumsView: View {
 
                     NavigationLink {
                         DetailView(
-                            year: number,
-                            albums: GetAlbums(year: number)
+                            year: number
                         )
                         .navigationTransition(
                             .zoom(sourceID: number, in: namespace)

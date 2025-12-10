@@ -13,7 +13,9 @@ struct AlbumsOfTheYearApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.dark)
         }
         .modelContainer(for: [AlbumModel.self])
+        
     }
 }

@@ -15,6 +15,13 @@ struct SearchView: View {
     @State private var searchTerm = ""
     @State private var albums: MusicItemCollection<Album> = []
 
+    
+    @Query private var albums1: [AlbumModel]
+    
+    func GetAlbums(year: Int) -> [AlbumModel] {
+        albums1.filter { $0.year == year }
+    }
+    
     var body: some View {
 
         rootView
@@ -82,15 +89,32 @@ struct SearchView: View {
             AlbumCell(album)
                 .onTapGesture {
                     
+                    let year = getYear(releaseDate: album.releaseDate)
+                    
+                    let maxRank = GetAlbums(year: year ?? 0).map { $0.rank }.max()
+                    
                     let selectedAlbum = AlbumModel(
                         name: album.title,
                         artist: album.artistName,
                         artworkUrl: album.artwork?.url(width: 56, height: 56),
-                        releaseDate: album.releaseDate
+                        releaseDate: album.releaseDate,
+                        rank: (maxRank ?? 0) + 1
                     )
                     context.insert(selectedAlbum)
                 }
         }
+    }
+    
+    private func getYear(releaseDate: Date?) -> Int? {
+        if releaseDate != nil {
+
+            let yearString = releaseDate!.formatted(.dateTime.year())
+
+            if let intValue = Int(yearString) {
+                return intValue
+            }
+        }
+        return nil
     }
 }
 

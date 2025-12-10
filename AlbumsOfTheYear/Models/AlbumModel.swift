@@ -16,12 +16,14 @@ class AlbumModel  {
     var artist: String = ""
     var artworkUrl: URL?
     var releaseDate: Date?
+    var rank: Int = 0
 
-    init(name: String, artist: String, artworkUrl: URL?, releaseDate: Date?) {
+    init(name: String, artist: String, artworkUrl: URL?, releaseDate: Date?, rank: Int) {
         self.name = name
         self.artist = artist
         self.artworkUrl = artworkUrl
         self.releaseDate = releaseDate
+        self.rank = rank
     }
 
     var year: Int? {

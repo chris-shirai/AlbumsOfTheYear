@@ -15,7 +15,7 @@ struct DetailView: View {
     @Environment(\.modelContext) private var context
 
     @State private var editMode = EditMode.inactive
-
+    var isEditing: Bool { editMode.isEditing == true }
     
     var body: some View {
         NavigationStack {
@@ -25,7 +25,7 @@ struct DetailView: View {
                     .font(.title)
 
                 List {
-                    ForEach(albums) { album in
+                    ForEach(albums.sorted(by: { $0.rank < $1.rank})) { album in
                         HStack {
 
                             VStack {
@@ -45,7 +45,7 @@ struct DetailView: View {
                             }
 
                             VStack(alignment: .leading) {
-                                Text("\(album.name)")
+                                Text("\(album.name) - \(album.rank)")
                                     .lineLimit(1)
                                     .foregroundColor(.primary)
 
@@ -58,6 +58,7 @@ struct DetailView: View {
                         }
                     }
                     .onMove(perform: move)
+                 
                     .onDelete { indexSet in
                         for index in indexSet {
                             context.delete(albums[index])
@@ -69,6 +70,8 @@ struct DetailView: View {
                             }
                         }
                     }
+                    .moveDisabled(!isEditing)
+                    .deleteDisabled(!isEditing)
 
                 }
                 .toolbar {

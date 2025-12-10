@@ -47,31 +47,36 @@ struct SampleData {
                 name: "BRAT",
                 artist: "Charli xcx",
                 artworkUrl: nil,
-                releaseDate: getDate(year: 2024)
+                releaseDate: getDate(year: 2024),
+                rank: 1
             ),
             AlbumModel(
                 name: "The Art of Loving",
                 artist: "Olivia Dean",
                 artworkUrl: nil,
-                releaseDate: getDate(year: 2025)
+                releaseDate: getDate(year: 2025),
+                rank: 1
             ),
             AlbumModel(
                 name: "moisturizer",
                 artist: "Wet Leg",
                 artworkUrl: nil,
-                releaseDate: getDate(year: 2025)
+                releaseDate: getDate(year: 2025),
+                rank: 2
             ),
             AlbumModel(
                 name: "Hurry Up Tomorrow",
                 artist: "The Weeknd",
                 artworkUrl: nil,
-                releaseDate: getDate(year: 2025)
+                releaseDate: getDate(year: 2025),
+                rank: 3
             ),
             AlbumModel(
                 name: "UTOPIA",
                 artist: "Travis Scott",
                 artworkUrl: nil,
-                releaseDate: getDate(year: 2023)
+                releaseDate: getDate(year: 2023),
+                rank: 1
             ),
         ]
     }()

@@ -13,15 +13,18 @@ struct AlbumsView: View {
     @Environment(\.modelContext) private var context
 
     @Query private var albums: [AlbumModel]
+    
+    @AppStorage("savedStartingYear")  var selectedStartingYear: Int = 1965
+    @AppStorage("savedEndingYear")  var selectedEndingYear: Int = 2025
 
-    @State private var startingYear: Int = 2023
-    @State private var endingYear: Int = 2025
+    
     @Namespace var namespace
 
     func GetAlbums(year: Int) -> [AlbumModel] {
-        return albums
+        return
+            albums
             .filter { $0.year == year }
-            .sorted {  $0.rank < $1.rank }
+            .sorted { $0.rank < $1.rank }
     }
 
     @State private var showTabBar = true
@@ -43,37 +46,28 @@ struct AlbumsView: View {
 
         NavigationStack {
             ScrollView {
-                ForEach((startingYear...endingYear).reversed(), id: \.self) {
-                    number in
+                    ForEach((selectedStartingYear...selectedEndingYear).reversed(), id: \.self) {
+                        number in
 
-                    NavigationLink {
-                        DetailView(
-                            year: number
-                        )
-                        .navigationTransition(
-                            .zoom(sourceID: number, in: namespace)
-                        )
-                        //                            .toolbar(showTabBar ? .visible : .hidden, for: .tabBar)
-                        //                            .onAppear {
-                        //                                      // Example: Hide tab bar after a delay
-                        //                                      DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        //                                          withAnimation {
-                        //                                              showTabBar = false
-                        //                                          }
-                        //                                      }
-                        //                                  }
-                        //                            .toolbarVisibility(.hidden, for: .navigationBar)
+                        NavigationLink {
+                            DetailView(
+                                year: number
+                            )
+                            .navigationTransition(
+                                .zoom(sourceID: number, in: namespace)
+                            )
 
-                    } label: {
-                        YearCardView(
-                            year: number,
-                            albums: GetAlbums(year: number)
-                        )
-                        .matchedTransitionSource(id: number, in: namespace)
+                        } label: {
+                            YearCardView(
+                                year: number,
+                                albums: GetAlbums(year: number)
+                            )
+                            .matchedTransitionSource(id: number, in: namespace)
+                        }
+                        .padding()
+
                     }
-                    .padding()
-
-                }
+  
             }
             .onAppear {
                 //                deleteAllInstancesOfModel(modelContext: context)

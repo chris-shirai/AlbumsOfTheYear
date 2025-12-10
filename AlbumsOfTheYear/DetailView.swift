@@ -101,7 +101,7 @@ struct DetailView: View {
 
     func ReSort() {
 
-        var mutableItems = albums.sorted(by: { $0.rank < $1.rank })
+        let mutableItems = albums.sorted(by: { $0.rank < $1.rank })
 
         for (index, item) in mutableItems.enumerated() {
             item.rank = index + 1

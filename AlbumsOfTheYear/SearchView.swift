@@ -22,6 +22,11 @@ struct SearchView: View {
         albums1.filter { $0.year == year }
     }
     
+    func IsAlbumAdded(id: String) -> Bool {
+        
+        return  (albums1.filter { $0.id == id }).count > 0
+        }
+    
     var body: some View {
 
         rootView
@@ -90,13 +95,16 @@ struct SearchView: View {
 
     private var searchResultsList: some View {
         List(albums) { album in
-            AlbumCell(album: album, addAlbum: {
+            AlbumCell(album: album, albumExists: IsAlbumAdded(id: album.id.rawValue), addAlbum: {
                  selectedAlbumYear = getYearFromDate(album.releaseDate)
                 selectedAlbumTitle = album.title
                 
                 let maxRank = GetAlbums(year: selectedAlbumYear ?? 0).map { $0.rank }.max()
                 
+//                print("album ID: \(album.id.rawValue)" )
+                
                 let selectedAlbum = AlbumModel(
+                    musicItemID: album.id.rawValue,
                     name: album.title,
                     artist: album.artistName,
                     artworkUrl: album.artwork?.url(width: 56, height: 56),
@@ -121,6 +129,7 @@ struct AlbumCell: View {
 
 
     let album: Album
+    var albumExists: Bool = false
     
     let addAlbum: () -> Void
 
@@ -146,22 +155,24 @@ struct AlbumCell: View {
             
             Spacer()
             
-            Button(action: {
-                addAlbum()
-              }) {
-                  Image(systemName: "plus.circle") // Icon when toggled ON
-                      .font(.title)
-                  
-//                  if isToggled {
-//                      Image(systemName: "pause.fill") // Icon when toggled ON
-//                          .font(.title)
-//                  } else {
-//                      Image(systemName: "play.fill") // Icon when toggled OFF
-//                          .font(.title)
-//                  }
-              }
-              .onTapGesture { }
-              .buttonStyle(BorderlessButtonStyle())
+            if albumExists {
+                Image(systemName: "checkmark") // Icon when toggled ON
+                    .font(.title2)
+                    .padding(.trailing, 5)
+                    .foregroundColor(.gray)
+                
+            } else {
+                Button(action: {
+                    addAlbum()
+                  }) {
+                    
+                          Image(systemName: "plus.circle") // Icon when toggled ON
+                              .font(.title)
+                      
+                  }
+                  .onTapGesture { }
+                  .buttonStyle(BorderlessButtonStyle())
+            }
         }
 
     }

@@ -70,7 +70,7 @@ struct AlbumsView: View {
   
             }
             .onAppear {
-                //                deleteAllInstancesOfModel(modelContext: context)
+//                                deleteAllInstancesOfModel(modelContext: context)
             }
         }
     }

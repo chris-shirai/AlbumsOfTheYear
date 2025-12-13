@@ -12,13 +12,15 @@ import SwiftData
 @Model
 class AlbumModel  {
 
+    var id: String = ""
     var name: String = ""
     var artist: String = ""
     var artworkUrl: URL?
     var releaseDate: Date?
     var rank: Int = 0
 
-    init(name: String, artist: String, artworkUrl: URL?, releaseDate: Date?, rank: Int) {
+    init(musicItemID: String, name: String, artist: String, artworkUrl: URL?, releaseDate: Date?, rank: Int) {
+        self.id = musicItemID
         self.name = name
         self.artist = artist
         self.artworkUrl = artworkUrl

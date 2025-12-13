@@ -44,6 +44,7 @@ struct SampleData {
     static let albums6: [AlbumModel] = {
         return [
             AlbumModel(
+                musicItemID: "1",
                 name: "The Art of Loving",
                 artist: "Olivia Dean",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -51,6 +52,7 @@ struct SampleData {
                 rank: 1
             ),
             AlbumModel(
+                musicItemID: "2",
                 name: "moisturizer",
                 artist: "Wet Leg",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -58,6 +60,7 @@ struct SampleData {
                 rank: 2
             ),
             AlbumModel(
+                musicItemID: "3",
                 name: "Hurry Up Tomorrow",
                 artist: "The Weeknd",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -65,6 +68,7 @@ struct SampleData {
                 rank: 3
             ),
             AlbumModel(
+                musicItemID: "4",
                 name: "moisturizer1",
                 artist: "Wet Leg1",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -72,6 +76,7 @@ struct SampleData {
                 rank: 5
             ),
             AlbumModel(
+                musicItemID: "5",
                 name: "Hurry Up Tomorrow6",
                 artist: "The Weeknd6",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -79,6 +84,7 @@ struct SampleData {
                 rank: 6
             ),
             AlbumModel(
+                musicItemID: "6",
                 name: "BRAT",
                 artist: "Charli xcx",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -86,6 +92,7 @@ struct SampleData {
                 rank: 1
             ),
             AlbumModel(
+                musicItemID: "7",
                 name: "BRAT2",
                 artist: "Charli xcx",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -93,6 +100,7 @@ struct SampleData {
                 rank: 2
             ),
             AlbumModel(
+                musicItemID: "8",
                 name: "BRAT3",
                 artist: "Charli xcx",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -100,6 +108,7 @@ struct SampleData {
                 rank: 3
             ),
             AlbumModel(
+                musicItemID: "9",
                 name: "BRAT4",
                 artist: "Charli xcx",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -113,6 +122,7 @@ struct SampleData {
     static let albums5: [AlbumModel] = {
         return [
             AlbumModel(
+                musicItemID: "1",
                 name: "BRAT",
                 artist: "Charli xcx",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -120,6 +130,7 @@ struct SampleData {
                 rank: 1
             ),
             AlbumModel(
+                musicItemID: "2",
                 name: "The Art of Loving",
                 artist: "Olivia Dean",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -127,6 +138,7 @@ struct SampleData {
                 rank: 1
             ),
             AlbumModel(
+                musicItemID: "3",
                 name: "moisturizer",
                 artist: "Wet Leg",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -134,6 +146,7 @@ struct SampleData {
                 rank: 2
             ),
             AlbumModel(
+                musicItemID: "4",
                 name: "Hurry Up Tomorrow",
                 artist: "The Weeknd",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -141,6 +154,7 @@ struct SampleData {
                 rank: 3
             ),
             AlbumModel(
+                musicItemID: "5",
                 name: "EUSEXUA",
                 artist: "FKA Twigs",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -153,6 +167,7 @@ struct SampleData {
     static let albums4: [AlbumModel] = {
         return [
             AlbumModel(
+                musicItemID: "1",
                 name: "BRAT",
                 artist: "Charli xcx",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -160,6 +175,7 @@ struct SampleData {
                 rank: 1
             ),
             AlbumModel(
+                musicItemID: "2",
                 name: "The Art of Loving",
                 artist: "Olivia Dean",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -167,6 +183,7 @@ struct SampleData {
                 rank: 1
             ),
             AlbumModel(
+                musicItemID: "3",
                 name: "moisturizer",
                 artist: "Wet Leg",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -174,6 +191,7 @@ struct SampleData {
                 rank: 2
             ),
             AlbumModel(
+                musicItemID: "4",
                 name: "Hurry Up Tomorrow",
                 artist: "The Weeknd",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -186,6 +204,7 @@ struct SampleData {
     static let albums3: [AlbumModel] = {
         return [
             AlbumModel(
+                musicItemID: "1",
                 name: "BRAT",
                 artist: "Charli xcx",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -193,6 +212,7 @@ struct SampleData {
                 rank: 1
             ),
             AlbumModel(
+                musicItemID: "2",
                 name: "The Art of Loving",
                 artist: "Olivia Dean",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -200,6 +220,7 @@ struct SampleData {
                 rank: 1
             ),
             AlbumModel(
+                musicItemID: "3",
                 name: "moisturizer",
                 artist: "Wet Leg",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -212,6 +233,7 @@ struct SampleData {
     static let albums2: [AlbumModel] = {
         return [
             AlbumModel(
+                musicItemID: "1",
                 name: "BRAT",
                 artist: "Charli xcx",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -219,6 +241,7 @@ struct SampleData {
                 rank: 1
             ),
             AlbumModel(
+                musicItemID: "2",
                 name: "The Art of Loving",
                 artist: "Olivia Dean",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),
@@ -231,6 +254,7 @@ struct SampleData {
     static let albums1: [AlbumModel] = {
         return [
             AlbumModel(
+                musicItemID: "1",
                 name: "BRAT",
                 artist: "Charli xcx",
                 artworkUrl: URL(string: "https://img.freepik.com/premium-photo/red-color-background-square-illustration-with-space-text_7954-36267.jpg"),

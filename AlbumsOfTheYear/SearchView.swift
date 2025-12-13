@@ -83,13 +83,18 @@ struct SearchView: View {
 
         }
     }
+    
+    @State private var isShowingAlert = false
+    @State private var selectedAlbumYear: Int?
+    @State private var selectedAlbumTitle: String = ""
 
     private var searchResultsList: some View {
         List(albums) { album in
             AlbumCell(album: album, addAlbum: {
-                let year = getYear(releaseDate: album.releaseDate)
+                 selectedAlbumYear = getYearFromDate(album.releaseDate)
+                selectedAlbumTitle = album.title
                 
-                let maxRank = GetAlbums(year: year ?? 0).map { $0.rank }.max()
+                let maxRank = GetAlbums(year: selectedAlbumYear ?? 0).map { $0.rank }.max()
                 
                 let selectedAlbum = AlbumModel(
                     name: album.title,
@@ -99,21 +104,15 @@ struct SearchView: View {
                     rank: (maxRank ?? 0) + 1
                 )
                 context.insert(selectedAlbum)
+                
+                isShowingAlert = true
             })
+        }
+        .alert(isPresented: $isShowingAlert){
+            Alert(title: Text("Added album to your collection!"), message: Text(" \(selectedAlbumTitle)  \(String(selectedAlbumYear ?? 0))"), dismissButton: .default(Text("Ok")))
         }
     }
     
-    private func getYear(releaseDate: Date?) -> Int? {
-        if releaseDate != nil {
-
-            let yearString = releaseDate!.formatted(.dateTime.year())
-
-            if let intValue = Int(yearString) {
-                return intValue
-            }
-        }
-        return nil
-    }
 }
 
 
@@ -137,9 +136,13 @@ struct AlbumCell: View {
         HStack {
             MusicItemCell(
                 artwork: album.artwork,
-                title: album.title,
-                subtitle: album.artistName
+                albumTitle: album.title,
+                artistName: album.artistName,
+                year: getYearFromDate(album.releaseDate)
             )
+            .onAppear {
+                print("\(album.title) - \(album.artwork?.url(width: 100, height: 100))")
+            }
             
             Spacer()
             
@@ -166,13 +169,11 @@ struct AlbumCell: View {
 
 struct MusicItemCell: View {
 
-    // MARK: - Properties
-
     let artwork: Artwork?
-    let title: String
-    let subtitle: String
+    let albumTitle: String
+    let artistName: String
+    let year: Int?
 
-    // MARK: - View
 
     var body: some View {
         HStack {
@@ -185,11 +186,11 @@ struct MusicItemCell: View {
                 }
             }
             VStack(alignment: .leading) {
-                Text(title)
+                Text(albumTitle)
                     .lineLimit(1)
                     .foregroundColor(.primary)
-                if !subtitle.isEmpty {
-                    Text(subtitle)
+                if !artistName.isEmpty {
+                    Text("\(artistName) -  \(year != nil ? String(year!) : "")")
                         .lineLimit(1)
                         .foregroundColor(.secondary)
                         .padding(.top, -4.0)

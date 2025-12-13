@@ -65,7 +65,7 @@ struct AlbumsView: View {
                             .matchedTransitionSource(id: number, in: namespace)
                         }
                         .padding()
-
+                        .buttonStyle(PlainButtonStyle()) 
                     }
   
             }
@@ -79,6 +79,6 @@ struct AlbumsView: View {
 
 #Preview { @MainActor in
     AlbumsView()
-        .modelContainer(previewConainer)
+        .modelContainer(previewContainer)
         .preferredColorScheme(.dark)  // Previews in dark mode
 }

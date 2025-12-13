@@ -88,15 +88,16 @@ struct DetailView: View {
                     .deleteDisabled(!isEditing)
 
                 }
+                .scrollContentBackground(.hidden)
+
                 .toolbar {
                     EditButton()
                 }
                 .environment(\.editMode, $editMode)
-
             }
+            .background(Color(UIColor.secondarySystemGroupedBackground))
 
         }
-
     }
 
     func ReSort() {
@@ -124,6 +125,12 @@ struct DetailView: View {
 }
 
 //#Preview {
-//    DetailView(year: 2025, albums: SampleData.albums)
+//    DetailView(year: 2025)
 //        .preferredColorScheme(.dark)
 //}
+
+#Preview { @MainActor in
+    DetailView(year: 2025)
+        .modelContainer(previewContainer)
+        .preferredColorScheme(.dark)  // Previews in dark mode
+}

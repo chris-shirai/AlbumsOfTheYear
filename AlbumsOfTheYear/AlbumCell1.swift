@@ -22,13 +22,17 @@ struct AlbumCell1: View {
             } placeholder: {
                 ProgressView()
             }
+            
+            Text("\(album.rank)")
+                .padding(10)
 
             VStack(alignment: .leading) {
                 Text("\(album.name)")
-                    .bold()
-
+                    .foregroundColor(.primary)
+                
                 Text("\(album.artist)")
-                    .font(.subheadline)
+//                    .font(.subheadline)
+                    .foregroundColor(.secondary)
             }
             .foregroundColor(.white)
 
@@ -38,6 +42,10 @@ struct AlbumCell1: View {
     }
 }
 
+
+
 #Preview {
-    AlbumCell1(album: SampleData.albums[0])
+    AlbumCell1(album: SampleData.albums4[0])
+        .preferredColorScheme(.dark)  // Previews in dark mode
+
 }

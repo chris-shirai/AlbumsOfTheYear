@@ -115,10 +115,15 @@ struct SearchView: View {
                 
                 isShowingAlert = true
             })
+         
         }
         .alert(isPresented: $isShowingAlert){
             Alert(title: Text("Added album to your collection!"), message: Text(" \(selectedAlbumTitle)  \(String(selectedAlbumYear ?? 0))"), dismissButton: .default(Text("Ok")))
         }
+        .sensoryFeedback(.success, trigger: isShowingAlert, condition: { oldValue, newValue in
+            // This condition ensures the haptic plays only when 'isShowingAlert' becomes true.
+            return newValue == true
+        })
     }
     
 }

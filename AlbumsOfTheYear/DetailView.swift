@@ -68,6 +68,7 @@ struct DetailView: View {
 
                             }
                         }
+                        .listRowBackground(Color(UIColor.secondarySystemGroupedBackground))
                     }
                     .onMove(perform: move)
 
@@ -87,9 +88,10 @@ struct DetailView: View {
                     }
                     .moveDisabled(!isEditing)
                     .deleteDisabled(!isEditing)
+                    
 
                 }
-                .scrollContentBackground(.hidden)
+                .listStyle(PlainListStyle())
 
                 .toolbar {
                     EditButton()

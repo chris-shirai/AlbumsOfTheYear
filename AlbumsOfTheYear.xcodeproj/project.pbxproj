@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		83ADCD972EEE7E4700E4FF60 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 83ADCD962EEE7E4700E4FF60 /* CachedAsyncImage */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		8304C09E2ED3E7DF00AD80C4 /* AlbumsOfTheYear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlbumsOfTheYear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83ADCD972EEE7E4700E4FF60 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = AlbumsOfTheYear;
 			packageProductDependencies = (
+				83ADCD962EEE7E4700E4FF60 /* CachedAsyncImage */,
 			);
 			productName = AlbumsOfTheYear;
 			productReference = 8304C09E2ED3E7DF00AD80C4 /* AlbumsOfTheYear.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = 8304C0952ED3E7DF00AD80C4;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				83ADCD952EEE7E4700E4FF60 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 8304C09F2ED3E7DF00AD80C4 /* Products */;
 			projectDirPath = "";
@@ -353,6 +362,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		83ADCD952EEE7E4700E4FF60 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		83ADCD962EEE7E4700E4FF60 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 83ADCD952EEE7E4700E4FF60 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8304C0962ED3E7DF00AD80C4 /* Project object */;
 }

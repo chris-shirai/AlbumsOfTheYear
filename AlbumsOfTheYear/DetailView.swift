@@ -7,6 +7,7 @@
 
 import SwiftData
 import SwiftUI
+import CachedAsyncImage
 
 struct DetailView: View {
     var year: Int
@@ -39,7 +40,7 @@ struct DetailView: View {
                             VStack {
                                 Spacer()
 
-                                AsyncImage(url: album.artworkUrl) { image in
+                                CachedAsyncImage(url: album.artworkUrl) { image in
                                     image
                                         .resizable()
                                         .scaledToFit()

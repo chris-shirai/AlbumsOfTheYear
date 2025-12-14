@@ -13,11 +13,10 @@ struct AlbumsView: View {
     @Environment(\.modelContext) private var context
 
     @Query private var albums: [AlbumModel]
-    
-    @AppStorage("savedStartingYear")  var selectedStartingYear: Int = 1965
-    @AppStorage("savedEndingYear")  var selectedEndingYear: Int = 2025
 
-    
+    @AppStorage("savedStartingYear") var selectedStartingYear: Int = 1965
+    @AppStorage("savedEndingYear") var selectedEndingYear: Int = 2025
+
     @Namespace var namespace
 
     func GetAlbums(year: Int) -> [AlbumModel] {
@@ -46,31 +45,40 @@ struct AlbumsView: View {
 
         NavigationStack {
             ScrollView {
-                    ForEach((selectedStartingYear...selectedEndingYear).reversed(), id: \.self) {
-                        number in
+                ForEach(
+                    (selectedStartingYear...selectedEndingYear).reversed(),
+                    id: \.self
+                ) {
+                    number in
 
-                        NavigationLink {
-                            DetailView(
-                                year: number
-                            )
-                            .navigationTransition(
-                                .zoom(sourceID: number, in: namespace)
-                            )
+                    NavigationLink {
+                        DetailView(
+                            year: number
+                        )
+                        .navigationTransition(
+                            .zoom(sourceID: number, in: namespace)
+                        )
 
-                        } label: {
-                            YearCardView(
-                                year: number,
-                                albums: GetAlbums(year: number)
-                            )
-                            .matchedTransitionSource(id: number, in: namespace)
-                        }
-                        .padding()
-                        .buttonStyle(PlainButtonStyle()) 
+                    } label: {
+                        YearCardView(
+                            year: number,
+                            albums: GetAlbums(year: number)
+                        )
+                        .matchedTransitionSource(id: number, in: namespace)
                     }
-  
+                    .padding()
+                    .buttonStyle(PlainButtonStyle())
+                }
+
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Image(systemName: "chevron.backward.circle.fill")
+
+                }
             }
             .onAppear {
-//                                deleteAllInstancesOfModel(modelContext: context)
+                //                                deleteAllInstancesOfModel(modelContext: context)
             }
         }
     }

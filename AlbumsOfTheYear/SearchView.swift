@@ -30,7 +30,9 @@ struct SearchView: View {
     var body: some View {
 
         rootView
-            .onChange(of: searchTerm, perform: requestUpdatedSearchResults)
+            .onChange(of: searchTerm) { oldValue, newValue in
+                requestUpdatedSearchResults(for: newValue)
+            }
     }
 
     @MainActor
